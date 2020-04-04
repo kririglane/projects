@@ -1,0 +1,35 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+    const int N = 7;
+    double sum = 0;
+    int matrix[N][N];
+    int i=0;
+    int j=0;
+    cout << "Введите значения матрицы" << endl;
+    for (i = 0; i<N; i++)
+    {
+        for (j=0; j<N; j++){
+            cin >> matrix[i][j];
+        }
+    }
+    
+    for (i = 0; i<N; i++)
+    {
+        if (i!=N/2)
+            sum = sum + matrix [i][0]+ matrix [i][N-1];
+        else (i ==N/2)
+        {
+            for (int j=0; j<N; j++)
+                sum = sum + matrix[i][j];
+            
+        }
+    }
+
+    cout << "Сумма заштрихованных элементов матрицы sum = " << sum << endl;
+        return 0;
+}
+
