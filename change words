@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+ 
+int main() {
+    const int N = 256;
+    char arr[N];
+ 
+    cout << "Enter string" << endl;
+    cin.getline(arr, N);
+ 
+    char *token = strtok(arr, " ");
+    char result[N] = "";
+ 
+    while ((token != NULL))
+    {
+        char *temp = strdup(result);
+        strcpy(result, token);
+        strcat(result, " ");
+        strcat(result, temp);
+        free(temp);
+        token = strtok(NULL, " ");
+    }
+    
+    cout << "Result: " << result << endl;
+  
+    return 0;
+}
+
+
