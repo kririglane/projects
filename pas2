@@ -1,0 +1,30 @@
+const
+l = 10;
+m= 10;
+
+var
+i, j : integer;
+sum: real;
+Q: array [1..l, 1..m] of real;
+
+begin
+for i:= 1 to l do begin
+      for j:=1 to m do begin
+           Q[i][j] := random();
+           write (Q[i][j]:5:2, ‘  ‘);
+      end;
+      writeln ();
+end;
+
+for i:= 1 to l do begin
+      sum:=0;       
+      for j:=1 to m do
+            sum:= sum+Q[i][j];
+      for j:=1 to m do begin
+            Q[i][j]:= Q[i][j]-sum/m;
+            writeln (Q[i][j]:5:2);
+      end;
+end;
+
+end.
+
