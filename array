@@ -1,0 +1,78 @@
+#include <iostream>
+#include <ctime>
+ 
+using namespace std;
+int main() {
+    srand(time(0)); //эта строка нужна чтобы при запуске программы каждый раз массив заполнялся новыми числами. без этой строки массив заполняется каждый раз одними и теми же числами
+    const int N = 10;
+    double arr[N];
+    double product = 1.0;
+    int k=0;
+int s =0;
+    for (int x = 0; x < N; x++)
+    {
+        arr[x] = rand() % 200 - 100 +(1.0 / ((rand() % 100) + 1)); // массив заполняется вещественными числами, то есть десятичными дробями (по определению вещественных чисел), поэтому мы к целой части рандомного числа добавляем "остаток" в виде десятичной дроби ("+(1.0 / ((rand() % 100) + 1));"  то есть единицу делим на рандомное число в диапазоне от 1 до 100)
+        if (arr[x] != 0.0)
+        {
+            product *= arr[x]; //вычисляем произведение ненулевых элементов массива
+k++;
+        }
+        cout << arr[x] << endl;
+    }
+    
+    double min = arr[0];
+    
+    for (int x = 1; x < N; x++)
+    {
+        if (min > arr[x])
+        {
+            min = arr[x];
+        }
+    }
+    
+    cout << "Min: " << min << endl;
+    
+        if (k)
+			cout << "Product: " << product << endl;
+        else cout << "Все числа в массиве равны нулю ";
+        
+    
+    cout << "Positive elements: ";
+    
+    for (int i = N - 1; i >= 0; i--)
+    {
+        if (arr[i] > 0.0)
+        {
+            cout << endl << arr[i];
+			  s++;
+        }
+    }
+	cout << endl;
+	if (!s) cout <<”Нет положительных элементов”<< endl; 
+
+    
+    
+    for (int i = 1; i < N; i++)
+    {
+        double key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+    cout << "Sorted: " << endl;
+    
+    for (int i = 0; i < N; i++)
+    {
+        cout << arr[i] << endl;
+    }
+}
+
+
+
+
+
+
