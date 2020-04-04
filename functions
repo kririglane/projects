@@ -1,0 +1,72 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+ 
+bool f1(float x, float *y) {
+    if ((x < -1) || (x > 1))
+        return false;
+    *y = asin(sqrt(abs(x)));
+    return true;
+}
+ 
+bool f2(float x, float *y) {
+    if ((x < -1) || (x > 1))
+        return false;
+    *y = log(1 / (1 - (x*x)));
+    return true;
+}
+ 
+bool f3(float x, float *y) {
+    *y = tan(x*x);
+    return true;
+}
+ 
+bool f4(float x, float *y) {
+    if (x == 0)
+        return false; 
+    *y = exp(pow(x, -2) - 1);
+    return true;
+}
+ 
+
+ 
+int main() {
+    float x;
+    int n;
+   
+ cout << "Выберите номер функции : " << endl;
+    cin >> n;
+ 
+    cout << "Введите x = ";
+    cin >> x;
+ 
+    bool(*ptr)(float x, float *y);
+ 
+    switch (n) {
+    case 1:
+        ptr = f1;
+        break;
+    case 2:
+        ptr = f2;
+        break;
+    case 3:
+        ptr = f3;
+        break;
+    case 4:
+        ptr = f4;
+        break;
+    default:
+        cout << "Неизвестный номер функции" << endl;
+        return 0;
+    }
+ 
+    float y;
+ 
+    bool result = (*ptr)(x, &y);
+    if (result) {
+        cout << "Функция  = " << y << endl;
+    } else cout << "Функция  = Error " << endl;
+ 
+    return 0;
+}
+
