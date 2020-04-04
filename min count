@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ 
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String consonant = "бвгджзйклмнпрстфхцчшщbcdfghjklmnpqrstvxzw";
+ 
+            Console.WriteLine("Enter string: ");
+            String input = Console.ReadLine();
+ 
+           
+            String[] words = input.Split(' ');
+ 
+            int max = 0;
+            int maxIndex = 0;
+ 
+            for(int index = 0; index < words.Length; index++)
+            {
+                String word = words[index];
+ 
+                int count = 0;
+                foreach(char ch in word.ToCharArray())
+                {
+                    if(consonant.IndexOf(ch) != -1)
+                    {
+                        count++;
+                    }
+                }
+ 
+                if(count > max)
+                {
+                    max = count;
+                    maxIndex = index;
+                }
+            }
+Console.WriteLine("Result: " + words[maxIndex] + " (" + max + ")");
+        }
+    }
+}
+
