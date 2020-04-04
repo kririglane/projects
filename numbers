@@ -1,0 +1,38 @@
+const
+ N = 255;
+
+Type
+A = string [N];
+
+var
+  s,left,right: A;
+  i,result : Integer;
+
+begin
+  writeln('Please Enter String');
+  readln(s);
+ 
+  i:= Ceil(Length(s) / 2);
+ 
+  left:= copy(s, 1, i);
+  right:= copy(s, i + 1, i);
+ 
+  Val(left, result, i);
+  if i > 0 then begin
+    writeln('Error. Wrong input');
+    exit;
+  end;
+  writeln('Left Int: ' + result);
+ 
+  Val(right, result, i);
+  if i > 0 then begin
+    writeln('Error. Wrong input');
+    exit;
+  end;
+  writeln('Right Int: ' + result);
+end.
+
+
+
+
+
