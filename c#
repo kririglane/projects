@@ -1,0 +1,40 @@
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ 
+namespace ConsoleApp5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string path = @"test.txt";
+ 
+            IEnumerable<String> lines = File.ReadLines(path);
+            foreach (String line in lines)
+            {
+                int i = line.IndexOf("\"");
+                while(i != -1)
+                {
+                    int j = line.IndexOf("\"", i + 1);
+                    if (j != -1)
+                    {
+                        Console.WriteLine(line.Substring(i, j - i + 1));
+                        i = line.IndexOf("\"", j + 1);
+                    }
+                    else break;
+                }
+            }
+        }
+ 
+    }
+}
+
