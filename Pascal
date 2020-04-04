@@ -1,0 +1,28 @@
+var
+ f1: TextFile;
+ s: String;
+ i,j: integer;
+begin
+  AssignFile(f1, 'test.txt');
+  try
+    Reset(f1);
+    while not eof(f1) do
+    begin
+      ReadLn(f1,s);
+     
+      i := s.IndexOf('"');
+      while i <> -1 do begin
+        j := s.IndexOf('"', i + 1);
+        if j <> -1 then begin
+          writeln(s.Substring(i, j - i + 1));
+          i := s.IndexOf('"', j + 1);
+        end
+        else break;
+      end;
+    end;
+  finally
+    CloseFile(f1);
+  end;
+end.
+
+
