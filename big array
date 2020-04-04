@@ -1,0 +1,78 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+double* sozdarr(int N)
+{
+    double *arr = new double [N];
+}
+
+void zapolnarr (double *arr, int N){
+srand(time(0)); //эта строка нужна чтобы при запуске программы каждый раз массив заполнялся новыми числами. без этой строки массив заполняется каждый раз одними и теми же числами
+for (int x = 0; x < N; x++)
+{
+    *(arr+x) = rand() % 200 - 100 +(1.0 / ((rand() % 100) + 1)); // массив заполняется вещественными числами, то есть десятичными дробями (по определению вещественных чисел), поэтому мы к целой части рандомного числа добавляем "остаток" в виде десятичной дроби ("+(1.0 / ((rand() % 100) + 1));"  то есть единицу делим на рандомное число в диапазоне от 1 до 100)
+    cout << *(arr+x) << endl;
+}
+}
+ 
+double max (double *arr, int N){
+    double max = *arr;
+    for (int x = 1; x < N; x++)
+    {
+        if (max < *(arr+x))
+            max = *(arr+x);
+    }
+    return max;
+}
+
+double pr (double *arr, int N){
+    double product=1;
+    for (int x = 0; x<N; x++){
+        product = product * (*(arr+x));
+		// product *=(*(arr+x));
+    }
+    return product;
+}
+
+void pol (double *arr, int N){
+    int s = 0;
+    for (int x = 0; x <N; x++)
+    {
+        if (*(arr+x) > 0.0)
+        {
+            cout << *(arr+x)<< endl;
+            s++;
+        }
+    }
+    cout << endl;
+    if (!s) cout <<"Нет положительных элементов"<< endl;
+
+}
+
+int main() {
+    int N;
+    cout << "Введите количество элементов массива N = "<<endl;
+    cin >> N;
+    double *arr;
+    
+    arr = sozdarr(N);
+    zapolnarr(arr,N);
+    double m1 = max (arr, N)
+    if (m1<0)
+        cout << "Нет положительных элементов";
+    else cout <<"Максимальный положительный элемент: " << m1 <<endl;
+    
+    cout <<"Произведение чисел массива: "<< pr(arr, N) << endl;
+    
+    cout << "Положительные элементы: " << endl;
+    pol(arr, N);
+    
+    delete arr;
+}
+
+
+
+
+
