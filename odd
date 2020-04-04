@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ 
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rand = new Random();
+            const int N = 10;
+            int[] array = new int[N];
+            int sum = 0;
+            int size = 0;
+            for(int i = 0; i < N; i++)
+            {
+                array[i] = rand.Next(0, 100); //rand.Next(-100, 100);
+                if (array[i] % 2 == 1)
+                {
+                    sum += array[i];
+                    size++;
+                }
+                Console.WriteLine(array[i]);
+            }
+
+            if (size == 0)
+            {
+                Console.WriteLine("В массиве нет нечетных чисел" );
+            }
+            else Console.WriteLine("Avg: " + sum / (double) size);
+        }
+    }
+}
+
+
+
